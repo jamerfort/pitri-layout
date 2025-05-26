@@ -1,0 +1,118 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pitri-header { grid-area: header; }
+.pitri-sidebar { grid-area: sidebar; }
+.pitri-sidebar2 { grid-area: sidebar2; }
+.pitri-content { grid-area: content; }
+.pitri-footer { grid-area: footer; }
+
+.pitri-header ,
+.pitri-sidebar ,
+.pitri-content ,
+.pitri-sidebar2 ,
+.pitri-footer {
+    margin: 0;
+    padding: 0;
+}
+
+.pitri-content {
+  overflow: auto;
+}
+
+.pitri-layout-I ,
+.pitri-layout-H ,
+.pitri-layout-C {
+  display: grid;
+  align-items: stretch;
+  justify-items: stretch;
+  grid-template-columns: [start] max-content auto [last] max-content [end];
+  grid-template-rows: [start] min-content [middle] auto [last] min-content [end];
+}
+
+.pitri-layout-I:not(:has(.pitri-sidebar2)) ,
+.pitri-layout-H:not(:has(.pitri-sidebar2)) ,
+.pitri-layout-C:not(:has(.pitri-sidebar2)) {
+  grid-template-columns: [start] max-content auto [last end];
+}
+
+.pitri-layout-I:not(:has(.pitri-footer)) ,
+.pitri-layout-H:not(:has(.pitri-footer)) ,
+.pitri-layout-C:not(:has(.pitri-footer)) {
+  grid-template-rows: [start] min-content [middle] auto [last] 0 [end];
+}
+
+.pitri-layout-I {
+  grid-template-areas:
+    "header  header  header"
+    "sidebar content sidebar2"
+    "footer  footer  footer";
+}
+
+.pitri-layout-H {
+  grid-template-areas:
+    "sidebar header  sidebar2"
+    "sidebar content sidebar2"
+    "sidebar footer  sidebar2";
+
+  &:not(:has(.pitri-sidebar2)) {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content"
+      "sidebar footer";
+  }
+
+}
+
+.pitri-layout-C {
+  grid-template-areas:
+    "sidebar header  header"
+    "sidebar content sidebar2"
+    "sidebar footer  footer";
+
+  &:not(:has(.pitri-sidebar2)) {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content"
+      "sidebar footer";
+  }
+
+}
+
+.pitri-layout-C {
+  grid-template-areas:
+    "sidebar header  header"
+    "sidebar content sidebar2"
+    "sidebar footer  footer";
+
+  &:not(:has(.pitri-sidebar2)) {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content"
+      "sidebar footer";
+  }
+
+}
+
+.pitri-layout-vertical {
+  display: flex;
+  flex-direction: column;
+
+  .pitri-content {
+    flex-grow: 1;
+  }
+}
+
+.pitri-layout-horizontal {
+  display: flex;
+  flex-direction: row;
+
+  .pitri-content {
+    flex-grow: 1;
+  }
+}
