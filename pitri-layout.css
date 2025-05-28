@@ -52,6 +52,13 @@ html, body {
     "header  header  header"
     "sidebar content sidebar2"
     "footer  footer  footer";
+
+  &:not(:has(.pitri-sidebar2)) {
+    grid-template-areas:
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+  }
 }
 
 .pitri-layout-H {
